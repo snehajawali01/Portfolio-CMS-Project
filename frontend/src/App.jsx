@@ -29,27 +29,45 @@ function App() {
           setProfile(response.data[0]);
         }
       })
-      .catch((error) => console.error("Profile error:", error));
+      .catch((error) => {
+        console.error("Profile error:", error);
+      });
 
     axios
       .get(`${API_URL}/skills/`)
-      .then((response) => setSkills(response.data))
-      .catch((error) => console.error("Skills error:", error));
+      .then((response) => {
+        setSkills(response.data);
+      })
+      .catch((error) => {
+        console.error("Skills error:", error);
+      });
 
     axios
       .get(`${API_URL}/projects/`)
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.error("Projects error:", error));
+      .then((response) => {
+        setProjects(response.data);
+      })
+      .catch((error) => {
+        console.error("Projects error:", error);
+      });
 
     axios
       .get(`${API_URL}/education/`)
-      .then((response) => setEducation(response.data))
-      .catch((error) => console.error("Education error:", error));
+      .then((response) => {
+        setEducation(response.data);
+      })
+      .catch((error) => {
+        console.error("Education error:", error);
+      });
 
     axios
       .get(`${API_URL}/experience/`)
-      .then((response) => setExperience(response.data))
-      .catch((error) => console.error("Experience error:", error));
+      .then((response) => {
+        setExperience(response.data);
+      })
+      .catch((error) => {
+        console.error("Experience error:", error);
+      });
   }, []);
 
   const handleChange = (event) => {
@@ -114,17 +132,41 @@ function App() {
       <section id="home" className="hero">
         {profile && (
           <>
-            <p className="hello">Hello, I'm</p>
+            <p className="hello">
+              Hello, I'm
+            </p>
 
-            <h1>{profile.name}</h1>
+            <h1>
+              {profile.name}
+            </h1>
 
-            <h2>{profile.title}</h2>
+            <h2>
+              {profile.title}
+            </h2>
 
-            <p className="hero-bio">{profile.bio}</p>
+            <p className="hero-bio">
+              {profile.bio}
+            </p>
 
-            <a href="#contact" className="button">
-              Contact Me
-            </a>
+            <div className="hero-buttons">
+
+              <a
+                href="#contact"
+                className="button"
+              >
+                Contact Me
+              </a>
+
+              <a
+                href="/resume.pdf"
+                className="button resume-button"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download Resume
+              </a>
+
+            </div>
           </>
         )}
       </section>
@@ -135,7 +177,9 @@ function App() {
 
         {profile && (
           <div className="about-card">
-            <p>{profile.bio}</p>
+            <p>
+              {profile.bio}
+            </p>
 
             <div className="about-details">
               <p>
@@ -163,9 +207,17 @@ function App() {
 
         <div className="skills-grid">
           {skills.map((skill) => (
-            <div className="skill-card" key={skill.id}>
-              <h3>{skill.name}</h3>
-              <p>{skill.level}</p>
+            <div
+              className="skill-card"
+              key={skill.id}
+            >
+              <h3>
+                {skill.name}
+              </h3>
+
+              <p>
+                {skill.level}
+              </p>
             </div>
           ))}
         </div>
@@ -177,14 +229,22 @@ function App() {
 
         <div className="projects-grid">
           {projects.map((project) => (
-            <div className="project-card" key={project.id}>
-
-              <h3>{project.title}</h3>
-
-              <p>{project.description}</p>
+            <div
+              className="project-card"
+              key={project.id}
+            >
+              <h3>
+                {project.title}
+              </h3>
 
               <p>
-                <strong>Technologies:</strong>{" "}
+                {project.description}
+              </p>
+
+              <p>
+                <strong>
+                  Technologies:
+                </strong>{" "}
                 {project.technologies}
               </p>
 
@@ -207,7 +267,6 @@ function App() {
                   Live Demo
                 </a>
               )}
-
             </div>
           ))}
         </div>
@@ -223,13 +282,21 @@ function App() {
               className="education-card"
               key={item.id}
             >
-              <h3>{item.degree}</h3>
+              <h3>
+                {item.degree}
+              </h3>
 
-              <h4>{item.institution}</h4>
+              <h4>
+                {item.institution}
+              </h4>
 
-              <p>{item.year}</p>
+              <p>
+                {item.year}
+              </p>
 
-              <p>{item.description}</p>
+              <p>
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -245,23 +312,32 @@ function App() {
               className="experience-card"
               key={item.id}
             >
-              <h3>{item.role}</h3>
+              <h3>
+                {item.role}
+              </h3>
 
-              <h4>{item.company}</h4>
+              <h4>
+                {item.company}
+              </h4>
 
               <p>
                 {item.start_date} -{" "}
                 {item.end_date || "Present"}
               </p>
 
-              <p>{item.description}</p>
+              <p>
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="section contact">
+      <section
+        id="contact"
+        className="section contact"
+      >
         <h2>Contact Me</h2>
 
         <p>
@@ -314,7 +390,9 @@ function App() {
             className="button"
             disabled={sending}
           >
-            {sending ? "Sending..." : "Send Message"}
+            {sending
+              ? "Sending..."
+              : "Send Message"}
           </button>
 
           {formMessage && (
@@ -323,13 +401,13 @@ function App() {
             </p>
           )}
         </form>
-
       </section>
 
       {/* Footer */}
       <footer>
         <p>
-          © 2026 Sneha Kancharla. All rights reserved.
+          © 2026 Sneha Kancharla.
+          All rights reserved.
         </p>
       </footer>
 
@@ -338,3 +416,4 @@ function App() {
 }
 
 export default App;
+
