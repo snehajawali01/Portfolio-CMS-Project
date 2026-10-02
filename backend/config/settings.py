@@ -164,16 +164,16 @@ REST_FRAMEWORK = {
 # =========================
 # CORS
 # =========================
-
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 
-
-# =========================
-# CSRF
-# =========================
-
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
 ]
+
+frontend_url = os.environ.get("FRONTEND_URL")
+
+if frontend_url:
+    CORS_ALLOWED_ORIGINS.append(frontend_url)
+    CSRF_TRUSTED_ORIGINS.append(frontend_url)
