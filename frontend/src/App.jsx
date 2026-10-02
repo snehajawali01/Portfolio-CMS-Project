@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://portfolio-cms-project-ml3o.onrender.com/api";
 
 function App() {
   const [profile, setProfile] = useState(null);
